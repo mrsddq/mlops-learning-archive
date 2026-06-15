@@ -31,3 +31,5 @@ docs/
 - `mlops-project`
 - `ml-template`
 - `devops`
+
+Next upgrade: use `docs/portfolio-extraction-plan.md` to choose one lab that can become a focused, reproducible project.

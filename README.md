@@ -1,8 +1,8 @@
-# MLOps Revision
+# MLOps Learning Archive
 
 Structured MLOps learning archive covering data workflows, Docker, Kubernetes, Jenkins, Kubeflow, monitoring, and deployment practice.
 
-This repository is intentionally archived after updates. It supports the active `mlops-project` and `ml-template` repos by preserving deeper notes and labs.
+This repository is intentionally archived after updates. It supports the active `rental-price-mlops-pipeline` and `python-ml-project-template` repos by preserving deeper notes and labs.
 
 ## Structure
 
@@ -28,8 +28,8 @@ docs/
 
 ## Related Active Repos
 
-- `mlops-project`
-- `ml-template`
-- `devops`
+- `rental-price-mlops-pipeline`
+- `python-ml-project-template`
+- `devops-learning-archive`
 
 Next upgrade: use `docs/portfolio-extraction-plan.md` to choose one lab that can become a focused, reproducible project.

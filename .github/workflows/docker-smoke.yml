@@ -1,0 +1,45 @@
+name: Docker Smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - S2/9-DockerfilesPythonAppPackaging/**
+      - S2/10-DockerImagesContainersUploadingToDockerHub/**
+      - S3/11-PackagingMLModelsUsingPickleContainerizingWithDocker/**
+      - .github/workflows/docker-smoke.yml
+  push:
+    branches: [main]
+    paths:
+      - S2/9-DockerfilesPythonAppPackaging/**
+      - S2/10-DockerImagesContainersUploadingToDockerHub/**
+      - S3/11-PackagingMLModelsUsingPickleContainerizingWithDocker/**
+      - .github/workflows/docker-smoke.yml
+
+permissions:
+  contents: read
+
+jobs:
+  docker-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: python-packaging
+            context: S2/9-DockerfilesPythonAppPackaging
+            run: true
+          - name: dockerhub-image
+            context: S2/10-DockerImagesContainersUploadingToDockerHub
+            run: true
+          - name: model-pickle
+            context: S3/11-PackagingMLModelsUsingPickleContainerizingWithDocker
+            run: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t "mlops-learning-${{ matrix.name }}:smoke" "${{ matrix.context }}"
+      - name: Run image
+        if: matrix.run
+        run: docker run --rm "mlops-learning-${{ matrix.name }}:smoke"

@@ -12,3 +12,5 @@ COPY src/data/housing_1000.csv data/housing_1000.csv
 RUN pip install -r requirements.txt
 
 RUN ["python","predict_rental.py"]
+
+CMD ["python","predict_rental.py"]

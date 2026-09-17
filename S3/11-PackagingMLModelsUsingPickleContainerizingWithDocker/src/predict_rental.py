@@ -1,4 +1,5 @@
 # Rental Price Prediction using Linear Regression
+from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
@@ -28,11 +29,11 @@ def predict_price(model, rooms, sqft):
 
 def main():
     # Load and prepare data
-    data = load_data('data/housing_1000.csv')
+    data = load_data(Path(__file__).resolve().parent / "data" / "housing_1000.csv")
     X, y = prepare_features(data)
 
     # Split data
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Train model
     model = train_model(X_train, y_train)
